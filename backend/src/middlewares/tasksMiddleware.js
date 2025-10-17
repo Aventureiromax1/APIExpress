@@ -1,17 +1,16 @@
-const validateBody = (req, res, next) => {
-  const { title, description } = req.body;
-    if (!title || !description) {
-        return res.status(400).json({ message: 'Title and description are required' });
-    }
-    if (body.title === undefined || body.description === undefined) {
-        return res.status(400).json({ message: 'Title and description cannot be undefined' });
-    }
-    if (body.title === '' || body.description === '') {
-        return res.status(400).json({ message: 'Title and description cannot be empty' });
-    }
-    next();
-};
+const validateBody = (request, response, next) => {
+  const { body } = request;
 
+  if (body.title === undefined) {
+    return response.status(400).json({ message: 'The field "title" is required' });
+  }
+
+  if (body.title === '') {
+    return response.status(400).json({ message: 'title cannot be empty' });
+  }
+
+  next();
+};
 const validateFieldStatus = (req, res, next) => {
     const { body } = req;
     if(body.status === undefined) {
